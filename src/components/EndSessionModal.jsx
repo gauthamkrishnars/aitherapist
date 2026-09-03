@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { CheckCircle2, Sparkles, Copy, Check, ArrowRight, X, HeartHandshake } from 'lucide-react';
+import { Copy, Check, ArrowRight, X, FileText } from 'lucide-react';
 import Link from 'next/link';
 
 export function EndSessionModal({ 
@@ -16,7 +16,7 @@ export function EndSessionModal({
 
   const handleCopy = async () => {
     try {
-      const text = `Therapy Session Summary: ${title}\n\nKey Insights:\n${summary}\n\nSuggested Coping Steps:\n${copingSteps.map((s, i) => `${i + 1}. ${s}`).join('\n')}\n\n(Generated via Clarity AI Therapist)`;
+      const text = `Consultation Summary: ${title}\n\nClinical Insights:\n${summary}\n\nActionable Coping Steps:\n${copingSteps.map((s, i) => `${i + 1}. ${s}`).join('\n')}\n\n(Recorded via Clarity)`;
       await navigator.clipboard.writeText(text);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -42,15 +42,15 @@ export function EndSessionModal({
         {/* Header */}
         <div className="flex items-start justify-between border-b border-slate-100 dark:border-slate-800 pb-4">
           <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-500/15 border border-emerald-500/30 text-emerald-600 dark:text-emerald-400">
-              <HeartHandshake className="h-5 w-5" />
+            <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 text-slate-700 dark:text-slate-300">
+              <FileText className="h-5 w-5" />
             </div>
             <div>
               <h2 id="summary-modal-title" className="text-lg sm:text-xl font-bold text-slate-900 dark:text-white">
-                Session Completed & Synthesized
+                Consultation Summary & Action Plan
               </h2>
               <p className="text-xs text-slate-500 dark:text-slate-400">
-                {title || 'Therapeutic Reflection'}
+                {title || 'Session Synthesis'}
               </p>
             </div>
           </div>
@@ -69,8 +69,8 @@ export function EndSessionModal({
           
           {/* Summary block */}
           <div className="space-y-2">
-            <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-              Therapeutic Synthesis
+            <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+              Key Themes & Insights
             </h3>
             <div className="rounded-xl border border-slate-200/80 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-900/40 p-4 leading-relaxed text-slate-700 dark:text-slate-300">
               {summary}
@@ -81,10 +81,10 @@ export function EndSessionModal({
           {copingSteps && copingSteps.length > 0 && (
             <div className="space-y-2.5">
               <div className="flex items-center justify-between">
-                <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                  Suggested Actionable Coping Steps
+                <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                  Recommended Practices
                 </h3>
-                <span className="text-[11px] font-mono text-emerald-600 dark:text-emerald-400 font-medium">
+                <span className="text-[11px] font-mono text-slate-500 font-medium">
                   {copingSteps.length} Practices
                 </span>
               </div>
@@ -95,8 +95,8 @@ export function EndSessionModal({
                     key={idx}
                     className="flex items-start gap-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900/80 p-3 shadow-xs"
                   >
-                    <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-400 mt-0.5">
-                      <span className="text-[11px] font-bold">{idx + 1}</span>
+                    <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono text-xs mt-0.5">
+                      {idx + 1}
                     </div>
                     <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-normal">
                       {step}
@@ -116,7 +116,7 @@ export function EndSessionModal({
             className="w-full sm:w-auto inline-flex items-center justify-center gap-1.5 px-3.5 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-200 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-700 shadow-xs transition-colors"
           >
             {copied ? <Check className="h-3.5 w-3.5 text-emerald-500" /> : <Copy className="h-3.5 w-3.5 text-slate-400" />}
-            <span>{copied ? 'Copied to Clipboard' : 'Copy Summary & Plan'}</span>
+            <span>{copied ? 'Copied to Clipboard' : 'Copy Summary'}</span>
           </button>
 
           <div className="flex items-center gap-2 w-full sm:w-auto">
@@ -125,7 +125,7 @@ export function EndSessionModal({
               onClick={onClose}
               className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1 px-3.5 py-2 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 text-xs font-medium hover:bg-slate-50 dark:hover:bg-slate-700 transition-colors"
             >
-              <span>Session Logs</span>
+              <span>Session History</span>
               <ArrowRight className="h-3 w-3" />
             </Link>
 
@@ -134,9 +134,9 @@ export function EndSessionModal({
                 onClose();
                 onStartNewSession();
               }}
-              className="flex-1 sm:flex-none inline-flex items-center justify-center px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-semibold shadow-xs transition-colors"
+              className="flex-1 sm:flex-none inline-flex items-center justify-center px-4 py-2 rounded-lg bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 text-white text-xs font-semibold shadow-xs transition-colors"
             >
-              Start New Session
+              Start Fresh Session
             </button>
           </div>
         </div>

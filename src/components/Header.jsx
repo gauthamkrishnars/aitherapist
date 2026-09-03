@@ -4,16 +4,12 @@ import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { 
-  HeartHandshake, 
   PlusCircle, 
-  BookOpen, 
   LifeBuoy, 
   LogOut, 
   User, 
   Menu, 
-  X,
-  ShieldCheck,
-  Sparkles
+  X
 } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 
@@ -57,7 +53,7 @@ export function Header({ onOpenCrisis }) {
       const res = await fetch('/api/sessions', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ title: 'New Reflection Session' }),
+        body: JSON.stringify({ title: 'Personal Reflection' }),
       });
       if (res.ok) {
         const data = await res.json();
@@ -78,14 +74,14 @@ export function Header({ onOpenCrisis }) {
           {/* Brand Logo */}
           <Link 
             href="/" 
-            className="flex items-center gap-2.5 focus:outline-none focus:ring-2 focus:ring-emerald-500 rounded-lg py-1 group shrink-0"
+            className="flex items-center gap-2.5 focus:outline-none focus:ring-2 focus:ring-slate-400 rounded-lg py-1 group shrink-0"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-emerald-600 text-white font-mono font-bold text-sm shadow-sm group-hover:bg-emerald-700 transition-colors">
+            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 font-serif font-bold text-sm shadow-xs transition-colors">
               Ψ
             </div>
             <div className="flex flex-col">
               <span className="text-base font-bold tracking-tight text-slate-900 dark:text-white font-sans">
-                Clarity <span className="hidden xs:inline font-normal text-slate-500 dark:text-slate-400">Therapy</span>
+                Clarity <span className="hidden xs:inline font-normal text-slate-500 dark:text-slate-400">Consult</span>
               </span>
             </div>
           </Link>
@@ -100,7 +96,7 @@ export function Header({ onOpenCrisis }) {
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/60'
               }`}
             >
-              Session Chat
+              Consultation
             </Link>
 
             <Link
@@ -119,7 +115,7 @@ export function Header({ onOpenCrisis }) {
               className="rounded-md px-3 py-1.5 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 transition-colors font-medium flex items-center gap-1.5"
             >
               <LifeBuoy className="h-4 w-4" />
-              <span>Crisis Support</span>
+              <span>Crisis Support (988)</span>
             </button>
           </nav>
 
@@ -130,10 +126,10 @@ export function Header({ onOpenCrisis }) {
             {user && (
               <button
                 onClick={handleNewSession}
-                title="Initialize a new therapy session"
-                className="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-1.5 text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-xs transition-colors"
+                title="Initialize a new session"
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-xs transition-colors"
               >
-                <PlusCircle className="h-3.5 w-3.5 text-emerald-600 dark:text-emerald-400" />
+                <PlusCircle className="h-3.5 w-3.5 text-slate-400" />
                 <span>New Session</span>
               </button>
             )}
@@ -175,7 +171,7 @@ export function Header({ onOpenCrisis }) {
             ) : (
               <Link
                 href="/auth"
-                className="inline-flex items-center justify-center rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white px-3 py-1.5 text-xs font-semibold shadow-xs transition-colors"
+                className="inline-flex items-center justify-center rounded-lg bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 text-white px-3 py-1.5 text-xs font-medium shadow-xs transition-colors"
               >
                 Sign In
               </Link>
@@ -202,7 +198,7 @@ export function Header({ onOpenCrisis }) {
               onClick={() => setMobileMenuOpen(false)}
               className="flex items-center justify-center py-2 text-xs font-medium rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-200"
             >
-              Session Chat
+              Consultation
             </Link>
 
             <Link
@@ -234,7 +230,7 @@ export function Header({ onOpenCrisis }) {
               <Link
                 href="/auth"
                 onClick={() => setMobileMenuOpen(false)}
-                className="text-emerald-600 font-semibold"
+                className="text-slate-900 dark:text-white font-medium"
               >
                 Sign In
               </Link>

@@ -71,7 +71,7 @@ export default function AuthPage() {
         
         {/* Header Title */}
         <div className="text-center space-y-2">
-          <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-xl bg-emerald-600 text-white font-mono font-bold text-base shadow-sm">
+          <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-lg bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 font-serif font-bold text-base shadow-xs">
             Ψ
           </div>
           <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
@@ -129,7 +129,7 @@ export default function AuthPage() {
           
           {tab === 'anonymous' ? (
             <div className="space-y-4 text-center py-2">
-              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-emerald-50 dark:bg-emerald-950/40 text-emerald-600 dark:text-emerald-400">
+              <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300">
                 <ShieldCheck className="h-6 w-6" />
               </div>
               <div className="space-y-1">
@@ -144,7 +144,7 @@ export default function AuthPage() {
               <button
                 onClick={handleStartAnonymous}
                 disabled={loading}
-                className="w-full flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 py-3 text-xs font-bold text-white shadow-xs transition-all disabled:opacity-60 cursor-pointer"
+                className="w-full flex items-center justify-center gap-2 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 py-3 text-xs font-semibold text-white shadow-xs transition-all disabled:opacity-60 cursor-pointer"
               >
                 {loading ? (
                   <>
@@ -174,7 +174,7 @@ export default function AuthPage() {
                       value={name}
                       onChange={(e) => setName(e.target.value)}
                       placeholder="e.g. Alex"
-                      className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 py-2.5 pl-9 pr-3 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                      className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 py-2.5 pl-9 pr-3 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400/20"
                     />
                   </div>
                 </div>
@@ -192,7 +192,7 @@ export default function AuthPage() {
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="you@example.com"
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 py-2.5 pl-9 pr-3 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 py-2.5 pl-9 pr-3 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400/20"
                   />
                 </div>
               </div>
@@ -210,7 +210,7 @@ export default function AuthPage() {
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     placeholder="At least 6 characters"
-                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 py-2.5 pl-9 pr-3 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-500/20"
+                    className="w-full rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-900 py-2.5 pl-9 pr-3 text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400/20"
                   />
                 </div>
               </div>
@@ -218,7 +218,7 @@ export default function AuthPage() {
               <button
                 type="submit"
                 disabled={loading}
-                className="w-full mt-2 flex items-center justify-center gap-2 rounded-xl bg-emerald-600 hover:bg-emerald-700 active:scale-95 py-3 text-xs font-bold text-white shadow-xs transition-all disabled:opacity-60 cursor-pointer"
+                className="w-full mt-2 flex items-center justify-center gap-2 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 py-3 text-xs font-semibold text-white shadow-xs transition-all disabled:opacity-60 cursor-pointer"
               >
                 {loading ? (
                   <>
@@ -235,7 +235,7 @@ export default function AuthPage() {
         </div>
 
         <p className="text-center text-xs text-slate-400 dark:text-slate-500 font-mono">
-          All data encrypted locally in SQLite database.
+          Protected session transmission.
         </p>
 
       </div>

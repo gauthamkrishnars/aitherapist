@@ -8,10 +8,8 @@ import {
   Copy, 
   Check, 
   MessageSquare, 
-  CheckCircle2, 
   Calendar, 
-  Sparkles, 
-  HeartHandshake,
+  FileText,
   Loader2
 } from 'lucide-react';
 import { formatSessionDate } from '../page';
@@ -56,7 +54,7 @@ export default function SessionDetailPage() {
         if (session.copingSteps) copingList = JSON.parse(session.copingSteps);
       } catch (e) {}
 
-      const text = `Session: ${session.title} (${formatSessionDate(session.createdAt)})\n\nSynthesis:\n${session.summary || 'No summary generated.'}\n\nCoping Plan:\n${copingList.map((s, i) => `${i + 1}. ${s}`).join('\n')}\n\n(Recorded via Clarity AI Therapist)`;
+      const text = `Consultation: ${session.title} (${formatSessionDate(session.createdAt)})\n\nSynthesis:\n${session.summary || 'No summary generated.'}\n\nCoping Plan:\n${copingList.map((s, i) => `${i + 1}. ${s}`).join('\n')}\n\n(Recorded via Clarity)`;
       await navigator.clipboard.writeText(text);
       setCopied(true);
       setTimeout(() => setCopied(false), 2000);
@@ -80,7 +78,7 @@ export default function SessionDetailPage() {
           className="inline-flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-slate-900 dark:hover:text-white transition-colors"
         >
           <ArrowLeft className="h-4 w-4" />
-          <span>Back to All Sessions</span>
+          <span>Back to History</span>
         </Link>
 
         {session && (
@@ -95,9 +93,9 @@ export default function SessionDetailPage() {
 
             <Link
               href={`/chat?session=${session.id}`}
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold shadow-xs transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 text-white text-xs font-medium shadow-xs transition-colors"
             >
-              <span>Resume Chat</span>
+              <span>Resume Consultation</span>
             </Link>
           </div>
         )}
@@ -110,7 +108,7 @@ export default function SessionDetailPage() {
           <div className="h-64 rounded-2xl skeleton-shimmer"></div>
         </div>
       ) : !session ? (
-        <div className="text-center py-12 text-sm text-slate-500">Session not found.</div>
+        <div className="text-center py-12 text-sm text-slate-500">Record not found.</div>
       ) : (
         <div className="space-y-6">
           
@@ -128,15 +126,15 @@ export default function SessionDetailPage() {
 
           {/* Synthesis & Coping Plan Card */}
           {session.summary && (
-            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-emerald-50/40 dark:bg-emerald-950/20 p-5 sm:p-7 shadow-xs space-y-5">
-              <div className="flex items-center gap-2.5 text-emerald-800 dark:text-emerald-300 font-bold text-sm">
-                <HeartHandshake className="h-5 w-5" />
-                <span>Therapeutic Synthesis & Coping Plan</span>
+            <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/70 dark:bg-[#0f172a] p-5 sm:p-7 shadow-xs space-y-5">
+              <div className="flex items-center gap-2.5 text-slate-900 dark:text-white font-bold text-sm">
+                <FileText className="h-4 w-4 text-slate-500" />
+                <span>Consultation Synthesis & Action Plan</span>
               </div>
 
               <div className="space-y-2">
                 <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                  Session Recap
+                  Clinical Summary
                 </h3>
                 <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
                   {session.summary}
@@ -144,17 +142,17 @@ export default function SessionDetailPage() {
               </div>
 
               {copingSteps.length > 0 && (
-                <div className="space-y-2.5 pt-2 border-t border-emerald-200/60 dark:border-emerald-900/40">
+                <div className="space-y-2.5 pt-2 border-t border-slate-200/80 dark:border-slate-800">
                   <h3 className="text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                    Actionable Coping Steps
+                    Recommended Practices
                   </h3>
                   <div className="space-y-2">
                     {copingSteps.map((step, idx) => (
                       <div
                         key={idx}
-                        className="flex items-start gap-3 rounded-xl bg-white dark:bg-slate-900/80 p-3.5 border border-slate-200/80 dark:border-slate-800 shadow-xs"
+                        className="flex items-start gap-3 rounded-xl bg-white dark:bg-slate-900 p-3.5 border border-slate-200/80 dark:border-slate-800 shadow-xs"
                       >
-                        <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-emerald-100 dark:bg-emerald-950 text-emerald-700 dark:text-emerald-400 text-xs font-bold mt-0.5">
+                        <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 font-mono text-xs mt-0.5">
                           {idx + 1}
                         </div>
                         <p className="text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed">
@@ -170,8 +168,8 @@ export default function SessionDetailPage() {
 
           {/* Transcript stream */}
           <div className="space-y-3">
-            <h2 className="text-sm font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-              Session Transcript ({session.messages?.length || 0} messages)
+            <h2 className="text-xs font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
+              Dialogue Record ({session.messages?.length || 0} messages)
             </h2>
 
             <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f172a] p-4 sm:p-6 shadow-xs divide-y divide-slate-100 dark:divide-slate-800/60">
@@ -180,8 +178,8 @@ export default function SessionDetailPage() {
                 return (
                   <div key={m.id} className="py-3.5 first:pt-0 last:pb-0">
                     <div className="flex items-center justify-between text-[11px] font-mono mb-1">
-                      <span className={`font-bold ${isUser ? 'text-slate-900 dark:text-white' : 'text-emerald-600 dark:text-emerald-400'}`}>
-                        {isUser ? 'You' : 'Clarity AI Therapist'}
+                      <span className={`font-semibold ${isUser ? 'text-slate-900 dark:text-white' : 'text-slate-500 dark:text-slate-400'}`}>
+                        {isUser ? 'Client' : 'Clarity'}
                       </span>
                       <span className="text-slate-400">
                         {new Date(m.createdAt).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
