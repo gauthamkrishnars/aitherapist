@@ -69,21 +69,19 @@ export function Header({ onOpenCrisis }) {
   return (
     <header className="sticky top-0 z-40 w-full border-b border-slate-200/80 dark:border-slate-800 bg-white/95 dark:bg-[#090d16]/95 backdrop-blur-md transition-colors">
       <div className="mx-auto max-w-7xl px-3 sm:px-6 lg:px-8">
-        <div className="flex h-14 sm:h-16 items-center justify-between gap-3">
+        <div className="flex h-14 sm:h-16 items-center justify-between gap-2 sm:gap-3">
           
-          {/* Brand Logo */}
+          {/* Brand Wordmark (No logo icon) */}
           <Link 
             href="/" 
-            className="flex items-center gap-2.5 focus:outline-none focus:ring-2 focus:ring-slate-400 rounded-lg py-1 group shrink-0"
+            className="flex items-center gap-1.5 focus:outline-none rounded-lg py-1 group shrink-0"
           >
-            <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 font-serif font-bold text-sm shadow-xs transition-colors">
-              Ψ
-            </div>
-            <div className="flex flex-col">
-              <span className="text-base font-bold tracking-tight text-slate-900 dark:text-white font-sans">
-                Clarity <span className="hidden xs:inline font-normal text-slate-500 dark:text-slate-400">Consult</span>
-              </span>
-            </div>
+            <span className="text-lg sm:text-xl font-bold tracking-tight text-slate-950 dark:text-white font-sans">
+              Clarity
+            </span>
+            <span className="text-xs font-mono text-slate-400 dark:text-slate-500 font-normal">
+              / Consult
+            </span>
           </Link>
 
           {/* Desktop Navigation Links */}
@@ -107,7 +105,7 @@ export function Header({ onOpenCrisis }) {
                   : 'text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800/60'
               }`}
             >
-              Session History
+              History
             </Link>
 
             <button
@@ -120,14 +118,14 @@ export function Header({ onOpenCrisis }) {
           </nav>
 
           {/* Right Controls */}
-          <div className="flex items-center gap-1.5 sm:gap-2.5">
+          <div className="flex items-center gap-1.5 sm:gap-2">
             
             {/* New Session Button */}
             {user && (
               <button
                 onClick={handleNewSession}
                 title="Initialize a new session"
-                className="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-3 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-xs transition-colors"
+                className="hidden sm:inline-flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-2.5 py-1.5 text-xs font-medium text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800 shadow-xs transition-colors"
               >
                 <PlusCircle className="h-3.5 w-3.5 text-slate-400" />
                 <span>New Session</span>
@@ -137,7 +135,7 @@ export function Header({ onOpenCrisis }) {
             {/* Crisis Quick Button for Mobile */}
             <button
               onClick={onOpenCrisis}
-              className="md:hidden flex h-8 px-2 items-center justify-center gap-1 rounded-lg border border-rose-200 dark:border-rose-900/60 bg-rose-50 dark:bg-rose-950/30 text-rose-700 dark:text-rose-300 text-xs font-semibold"
+              className="md:hidden flex h-8 px-2 items-center justify-center gap-1 rounded-lg border border-rose-200 dark:border-rose-900/60 bg-rose-50 dark:bg-rose-950/30 text-rose-700 dark:text-rose-300 text-[11px] font-semibold"
             >
               <LifeBuoy className="h-3.5 w-3.5" />
               <span>988</span>
@@ -148,10 +146,10 @@ export function Header({ onOpenCrisis }) {
 
             {/* User Account / Auth Actions */}
             {user ? (
-              <div className="flex items-center gap-1.5">
+              <div className="flex items-center gap-1">
                 <div className="hidden lg:flex items-center gap-1.5 rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 px-2.5 py-1 text-xs text-slate-700 dark:text-slate-300">
                   <User className="h-3.5 w-3.5 text-slate-400" />
-                  <span className="font-medium truncate max-w-[110px]">{user.name}</span>
+                  <span className="font-medium truncate max-w-[100px]">{user.name}</span>
                   {user.isAnonymous && (
                     <span className="text-[10px] font-mono px-1 rounded bg-slate-200 dark:bg-slate-800 text-slate-500">
                       Guest
@@ -171,7 +169,7 @@ export function Header({ onOpenCrisis }) {
             ) : (
               <Link
                 href="/auth"
-                className="inline-flex items-center justify-center rounded-lg bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 text-white px-3 py-1.5 text-xs font-medium shadow-xs transition-colors"
+                className="inline-flex items-center justify-center rounded-lg bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 text-white px-2.5 py-1.5 text-xs font-medium shadow-xs transition-colors"
               >
                 Sign In
               </Link>
@@ -191,7 +189,7 @@ export function Header({ onOpenCrisis }) {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f172a] px-4 py-3 space-y-2 animate-in slide-in-from-top-2 duration-150">
+        <div className="md:hidden border-b border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f172a] px-3 py-3 space-y-2 animate-in slide-in-from-top-2 duration-150">
           <div className="grid grid-cols-2 gap-2 pb-2">
             <Link
               href="/chat"
@@ -216,7 +214,7 @@ export function Header({ onOpenCrisis }) {
                 setMobileMenuOpen(false);
                 onOpenCrisis();
               }}
-              className="text-rose-600 dark:text-rose-400 font-semibold flex items-center gap-1 py-1"
+              className="text-rose-600 dark:text-rose-400 font-medium flex items-center gap-1 py-1"
             >
               <LifeBuoy className="h-3.5 w-3.5" />
               <span>Emergency 988 Lifeline</span>

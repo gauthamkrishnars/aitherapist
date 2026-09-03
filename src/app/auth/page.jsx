@@ -70,10 +70,7 @@ export default function AuthPage() {
       <div className="w-full max-w-md space-y-6">
         
         {/* Header Title */}
-        <div className="text-center space-y-2">
-          <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-lg bg-slate-900 dark:bg-slate-100 text-white dark:text-slate-950 font-serif font-bold text-base shadow-xs">
-            Ψ
-          </div>
+        <div className="text-center space-y-1.5">
           <h1 className="text-2xl font-bold tracking-tight text-slate-900 dark:text-white">
             Welcome to Clarity
           </h1>
@@ -83,12 +80,12 @@ export default function AuthPage() {
         </div>
 
         {/* Tab Switcher */}
-        <div className="grid grid-cols-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 p-1 text-xs font-semibold">
+        <div className="grid grid-cols-3 rounded-xl border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 p-1 text-[11px] sm:text-xs font-medium">
           <button
             onClick={() => { setTab('login'); setError(null); }}
             className={`rounded-lg py-2 transition-all ${
               tab === 'login'
-                ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs font-bold'
+                ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs font-semibold'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
@@ -98,7 +95,7 @@ export default function AuthPage() {
             onClick={() => { setTab('register'); setError(null); }}
             className={`rounded-lg py-2 transition-all ${
               tab === 'register'
-                ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs font-bold'
+                ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs font-semibold'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >
@@ -108,7 +105,7 @@ export default function AuthPage() {
             onClick={() => { setTab('anonymous'); setError(null); }}
             className={`rounded-lg py-2 transition-all ${
               tab === 'anonymous'
-                ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs font-bold'
+                ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white shadow-xs font-semibold'
                 : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
             }`}
           >

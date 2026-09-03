@@ -45,7 +45,7 @@ export const metadata = {
     images: ['https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1200&q=80'],
   },
   icons: {
-    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%23059669'/><text x='50' y='65' font-size='48' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>Ψ</text></svg>",
+    icon: "data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='46' fill='%230f172a'/><text x='50' y='65' font-size='44' text-anchor='middle' fill='white' font-family='sans-serif' font-weight='bold'>C</text></svg>",
   },
 };
 

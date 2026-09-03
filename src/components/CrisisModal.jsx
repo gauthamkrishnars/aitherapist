@@ -86,7 +86,7 @@ export function CrisisModal({ isOpen, onClose }) {
                   </p>
                 </div>
 
-                <div className="flex items-center gap-2 shrink-0 pt-1 sm:pt-0">
+                <div className="flex flex-wrap items-center gap-1.5 sm:gap-2 shrink-0 pt-1.5 sm:pt-0">
                   {res.contact.includes('988') && (
                     <a
                       href="tel:988"
