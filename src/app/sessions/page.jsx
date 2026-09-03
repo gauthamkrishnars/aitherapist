@@ -8,8 +8,7 @@ import {
   Search, 
   PlusCircle, 
   MessageSquare, 
-  ArrowRight, 
-  Clock 
+  ArrowRight
 } from 'lucide-react';
 
 export function formatSessionDate(isoString) {
@@ -81,22 +80,22 @@ export default function SessionsDashboard() {
   });
 
   return (
-    <div className="flex-1 max-w-5xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-6 sm:py-10 space-y-6">
+    <div className="flex-1 max-w-5xl mx-auto w-full px-3 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-6">
       
       {/* Header Banner */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-slate-200 dark:border-slate-800 pb-4 sm:pb-5">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3 border-b border-[#E7E3D8] dark:border-[#262C29] pb-4 sm:pb-5">
         <div>
-          <h1 className="text-xl sm:text-2xl md:text-3xl font-bold tracking-tight text-slate-900 dark:text-white">
-            Session History & Logs
+          <h1 className="text-2xl sm:text-3xl font-serif font-normal text-[#1A1C20] dark:text-[#FAF8F5]">
+            Consultation History & Notes
           </h1>
-          <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5">
+          <p className="text-xs sm:text-sm text-[#666B63] dark:text-[#9EA59B] mt-1">
             Review your past dialogues, syntheses, and actionable coping plans.
           </p>
         </div>
 
         <button
           onClick={handleStartNewSession}
-          className="inline-flex items-center justify-center gap-1.5 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-100 text-white font-medium text-xs shadow-xs transition-colors cursor-pointer shrink-0 self-start sm:self-auto"
+          className="inline-flex items-center justify-center gap-1.5 px-4 py-2.5 rounded-xl bg-[#233B2B] hover:bg-[#1B2F22] dark:bg-[#EAE8E2] dark:text-[#141A16] dark:hover:bg-white text-white font-medium text-xs shadow-subtle transition-colors cursor-pointer shrink-0 self-start sm:self-auto"
         >
           <PlusCircle className="h-4 w-4" />
           <span>New Session</span>
@@ -106,43 +105,43 @@ export default function SessionsDashboard() {
       {/* Search & Filter Strip */}
       <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-3">
         <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3 top-3 h-4 w-4 text-slate-400" />
+          <Search className="absolute left-3 top-3 h-4 w-4 text-[#8C9288]" />
           <input
             type="text"
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            placeholder="Search past logs by keyword..."
-            className="w-full rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f172a] py-2.5 pl-9 pr-3 text-base sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:border-slate-400 focus:outline-none focus:ring-2 focus:ring-slate-400/20 shadow-xs"
+            placeholder="Search past notes by keyword..."
+            className="w-full rounded-xl border border-[#DCD7CB] dark:border-[#2C332E] bg-white dark:bg-[#181C1A] py-2.5 pl-9 pr-3 text-base sm:text-sm text-[#1A1C20] dark:text-[#EDEBE4] placeholder:text-[#969C92] focus:border-[#38533F] focus:outline-none focus:ring-2 focus:ring-[#38533F]/15 shadow-subtle"
           />
         </div>
 
-        <div className="flex items-center rounded-lg border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-900 p-0.5 text-xs font-medium self-start sm:self-auto">
+        <div className="flex items-center rounded-lg border border-[#DDD8CB] dark:border-[#2B322D] bg-[#EFECE3] dark:bg-[#1A1E1C] p-0.5 text-xs font-medium self-start sm:self-auto">
           <button
             onClick={() => setFilter('all')}
-            className={`rounded-md px-2.5 sm:px-3 py-1.5 transition-colors ${
+            className={`rounded-md px-3 py-1.5 transition-colors ${
               filter === 'all'
-                ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold shadow-xs'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-white dark:bg-[#252B27] text-[#1A1C20] dark:text-white font-semibold shadow-subtle'
+                : 'text-[#63685F] dark:text-[#8E958C] hover:text-[#1A1C20] dark:hover:text-white'
             }`}
           >
             All ({sessions.length})
           </button>
           <button
             onClick={() => setFilter('completed')}
-            className={`rounded-md px-2.5 sm:px-3 py-1.5 transition-colors ${
+            className={`rounded-md px-3 py-1.5 transition-colors ${
               filter === 'completed'
-                ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold shadow-xs'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-white dark:bg-[#252B27] text-[#1A1C20] dark:text-white font-semibold shadow-subtle'
+                : 'text-[#63685F] dark:text-[#8E958C] hover:text-[#1A1C20] dark:hover:text-white'
             }`}
           >
             Completed
           </button>
           <button
             onClick={() => setFilter('active')}
-            className={`rounded-md px-2.5 sm:px-3 py-1.5 transition-colors ${
+            className={`rounded-md px-3 py-1.5 transition-colors ${
               filter === 'active'
-                ? 'bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-semibold shadow-xs'
-                : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white'
+                ? 'bg-white dark:bg-[#252B27] text-[#1A1C20] dark:text-white font-semibold shadow-subtle'
+                : 'text-[#63685F] dark:text-[#8E958C] hover:text-[#1A1C20] dark:hover:text-white'
             }`}
           >
             Active
@@ -152,28 +151,28 @@ export default function SessionsDashboard() {
 
       {/* Content List */}
       {loading ? (
-        <div className="space-y-3">
+        <div className="space-y-3.5">
           {[...Array(3)].map((_, i) => (
             <div key={i} className="h-28 rounded-2xl skeleton-shimmer"></div>
           ))}
         </div>
       ) : filteredSessions.length === 0 ? (
-        <div className="rounded-2xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f172a] p-8 sm:p-12 text-center space-y-3 shadow-xs">
-          <div className="mx-auto flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-400">
+        <div className="rounded-2xl border border-[#E5E0D5] dark:border-[#262C28] bg-white dark:bg-[#181C1A] p-8 sm:p-14 text-center space-y-3 shadow-subtle">
+          <div className="mx-auto flex h-11 w-11 items-center justify-center rounded-full bg-[#F4F1E9] dark:bg-[#222724] text-[#757B72]">
             <BookOpen className="h-5 w-5" />
           </div>
-          <h3 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white">
-            {search ? 'No matching logs found' : 'No recorded sessions yet'}
+          <h3 className="text-base font-serif font-normal text-[#1A1C20] dark:text-[#EDEBE5]">
+            {search ? 'No matching records found' : 'No consultations documented yet'}
           </h3>
-          <p className="text-xs text-slate-500 dark:text-slate-400 max-w-sm mx-auto">
+          <p className="text-xs text-[#6A7067] dark:text-[#9AA297] max-w-sm mx-auto leading-relaxed">
             {search
               ? 'Try adjusting your search terms or clearing the filter.'
-              : 'Begin your first reflection session with Clarity to start documenting your journey.'}
+              : 'Begin your first reflection session with Clarity to begin documenting your insights and coping steps.'}
           </p>
           {!search && (
             <button
               onClick={handleStartNewSession}
-              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-950 text-white font-medium text-xs shadow-xs transition-colors"
+              className="inline-flex items-center gap-1.5 px-4 py-2 rounded-xl bg-[#233B2B] hover:bg-[#1B2F22] dark:bg-[#EAE8E2] dark:text-[#141A16] text-white font-medium text-xs shadow-subtle transition-colors"
             >
               <PlusCircle className="h-3.5 w-3.5" />
               <span>Begin First Session</span>
@@ -181,45 +180,45 @@ export default function SessionsDashboard() {
           )}
         </div>
       ) : (
-        <div className="space-y-3">
+        <div className="space-y-3.5">
           {filteredSessions.map((item) => {
             const isCompleted = item.status === 'completed';
             return (
               <Link
                 key={item.id}
                 href={isCompleted ? `/sessions/${item.id}` : `/chat?session=${item.id}`}
-                className="group block rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0f172a] p-4 sm:p-5 shadow-xs hover:border-slate-300 dark:hover:border-slate-700 transition-colors"
+                className="group block rounded-xl border border-[#E5E0D5] dark:border-[#262C28] bg-white dark:bg-[#181C1A] p-5 shadow-subtle hover:border-[#D0CABE] dark:hover:border-[#38423C] transition-all"
               >
-                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
                   <div className="space-y-1">
                     <div className="flex items-center gap-2">
-                      <span className="text-[11px] font-mono px-2 py-0.5 rounded border border-slate-200 dark:border-slate-700 bg-slate-50 dark:bg-slate-900 text-slate-600 dark:text-slate-400">
+                      <span className="text-[11px] font-mono px-2 py-0.5 rounded border border-[#E0DCD1] dark:border-[#2E3631] bg-[#F7F5EF] dark:bg-[#1F2421] text-[#555B52] dark:text-[#9DA59B]">
                         {isCompleted ? 'Synthesized' : 'Active'}
                       </span>
 
-                      <span className="text-xs text-slate-400 dark:text-slate-500 font-mono">
+                      <span className="text-xs text-[#82887F] dark:text-[#7D847B] font-mono">
                         {formatSessionDate(item.createdAt)}
                       </span>
                     </div>
 
-                    <h2 className="text-sm sm:text-base font-bold text-slate-900 dark:text-white group-hover:text-slate-600 dark:group-hover:text-slate-300 transition-colors">
+                    <h2 className="text-base font-serif font-normal text-[#1A1C20] dark:text-[#FAF8F5] group-hover:text-[#2E4A35] dark:group-hover:text-[#CEDAD1] transition-colors">
                       {item.title}
                     </h2>
                   </div>
 
-                  <div className="flex items-center gap-3 shrink-0 self-start sm:self-auto text-xs font-mono text-slate-500 pt-1 sm:pt-0">
+                  <div className="flex items-center gap-3 shrink-0 self-start sm:self-auto text-xs font-mono text-[#7D837A] pt-1 sm:pt-0">
                     <span className="flex items-center gap-1">
                       <MessageSquare className="h-3.5 w-3.5" />
-                      <span>{item._count?.messages || 0}</span>
+                      <span>{item._count?.messages || 0} messages</span>
                     </span>
-                    <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-slate-50 dark:bg-slate-800 text-slate-400 group-hover:text-slate-900 dark:group-hover:text-white transition-colors">
+                    <div className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#FAF8F5] dark:bg-[#202522] text-[#8C9289] group-hover:text-[#1A1C20] dark:group-hover:text-white transition-colors">
                       <ArrowRight className="h-3.5 w-3.5" />
                     </div>
                   </div>
                 </div>
 
                 {item.summary && (
-                  <p className="mt-2.5 text-xs text-slate-600 dark:text-slate-400 line-clamp-2 leading-relaxed border-t border-slate-100 dark:border-slate-800/80 pt-2.5">
+                  <p className="mt-2.5 text-xs text-[#5D635A] dark:text-[#9EA59B] line-clamp-2 leading-relaxed border-t border-[#F0ECE2] dark:border-[#252C28] pt-2.5">
                     {item.summary}
                   </p>
                 )}

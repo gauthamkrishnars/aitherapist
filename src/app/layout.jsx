@@ -82,7 +82,7 @@ export default function RootLayout({ children }) {
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
         <link
-          href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+          href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
           rel="stylesheet"
         />
         <script
@@ -90,7 +90,7 @@ export default function RootLayout({ children }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className="bg-slate-50 text-slate-900 dark:bg-[#090d16] dark:text-slate-100 font-sans antialiased min-h-screen flex flex-col selection:bg-emerald-500 selection:text-white transition-colors duration-200">
+      <body className="bg-[#FAF9F6] text-[#1A1C20] dark:bg-[#121413] dark:text-[#ECEAE5] font-sans antialiased min-h-screen flex flex-col selection:bg-[#2A4030] selection:text-white transition-colors duration-200">
         <Providers>
           {children}
         </Providers>

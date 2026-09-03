@@ -13,9 +13,16 @@
 
   body {
     overflow-x: hidden;
+    background-color: #FAF9F6;
+    color: #1A1C20;
   }
 
-  /* Minimal custom scrollbar */
+  .dark body {
+    background-color: #121413;
+    color: #ECEAE5;
+  }
+
+  /* Subtle, tactile scrollbar */
   ::-webkit-scrollbar {
     width: 6px;
     height: 6px;
@@ -26,34 +33,24 @@
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #cbd5e1;
+    background: #D5D2C9;
     border-radius: 9999px;
   }
 
   .dark ::-webkit-scrollbar-thumb {
-    background: #334155;
+    background: #2D332F;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    background: #94a3b8;
+    background: #B6B2A6;
   }
 
   .dark ::-webkit-scrollbar-thumb:hover {
-    background: #475569;
+    background: #404842;
   }
 }
 
-/* Subtle dot grid */
-.bg-grid-subtle {
-  background-size: 28px 28px;
-  background-image: radial-gradient(rgba(148, 163, 184, 0.25) 1px, transparent 1px);
-}
-
-.dark .bg-grid-subtle {
-  background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
-}
-
-/* Shimmer animation for skeleton loaders */
+/* Skeleton shimmer with warm tones */
 @keyframes shimmer {
   0% {
     background-position: -200% 0;
@@ -64,13 +61,13 @@
 }
 
 .skeleton-shimmer {
-  background: linear-gradient(90deg, #f1f5f9 25%, #e2e8f0 50%, #f1f5f9 75%);
+  background: linear-gradient(90deg, #F0EEE6 25%, #E3E0D6 50%, #F0EEE6 75%);
   background-size: 200% 100%;
   animation: shimmer 1.8s infinite;
 }
 
 .dark .skeleton-shimmer {
-  background: linear-gradient(90deg, #161f33 25%, #24324f 50%, #161f33 75%);
+  background: linear-gradient(90deg, #1C201E 25%, #272C29 50%, #1C201E 75%);
   background-size: 200% 100%;
 }
 
